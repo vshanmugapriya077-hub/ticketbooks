@@ -1,5 +1,4 @@
 services:
-  # Web Application Service
   - type: web
     name: ticketflow-app
     env: node
@@ -15,19 +14,9 @@ services:
         fromDatabase:
           name: ticketflow-postgres
           property: connectionString
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: ticketflow-redis
-          property: connectionString
 
 databases:
-  # Managed PostgreSQL
   - name: ticketflow-postgres
     plan: free
     databaseName: ticketflow_db
     user: ticketflow_user
-
-  # Managed Redis Cache
-  - name: ticketflow-redis
-    plan: free
